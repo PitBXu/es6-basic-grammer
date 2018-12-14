@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script type="module">
+        // ES2017 中的 async await
+        // 'use strict' 严格模式，在 ES6 的模块中，默认使用了严格模式
+        async function main() {
+            const mod1 = await import('../modules/modu1.js');
+            const mod2 = await import('../modules/modu2.js');
+            console.log(mod1,mod2);
+            const [m1,m2] = await Promise.all([
+                import('../modules/modu1.js'),
+                import('../modules/modu2.js')
+            ]);
+            console.log(m1,m2);
+        }
+        main();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

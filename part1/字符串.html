@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        let name = 'Corey';
+        let age = 18;
+        let str = `这个人叫${name},${age}岁`;
+        document.write(str);
+        
+        let data = [
+            {title:"大型电视纪录片《我们一起走过》第三集、第四集",read:100},
+            {title:"习近平会见巴拿马国民大会主席阿夫雷戈",read:120},
+            {title:"论习近平二十国集团领导人峰会重要讲话",read:123},
+            {title:"中国和巴拿马联合新闻公报 共创中葡关系更美好明天",read:124},
+            {title:"彭丽媛会见巴总统夫人并出席艾滋病防治宣传活动",read:174}
+        ]
+        window.onload = function(){
+            let oUl = document.querySelector("#ul1");
+            for (let i=0;i<data.length;i++){
+                let oLi = document.createElement("li");
+                oLi.innerHTML=`<span>${data[i].title}</span>
+                               <span>阅读人数：${data[i].read}</span>
+                               <a href="#">详情</a>`;
+                oUl.appendChild(oLi);
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <ul id="ul1">
+        <!-- <li>
+            <span>新闻标题</span>
+            <span>阅读人数：10</span>
+            <a href="#">详情</a>
+        </li> -->
+    </ul>
+
+</body>
+
+</html>

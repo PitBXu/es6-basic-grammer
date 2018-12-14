@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        let show = () => 1;
+        /* //上面的相当于:
+        function show(){
+            return 1;
+        }*/
+        console.log(show());
+
+        //加参数的箭头函数：
+         /*
+        function add(a,b){
+            return a+b;
+        }*/
+        let add = (a,b) => a+b;
+        console.log(add(12,4));
+
+         //完整的箭头函数：
+        let multi = (a,b) =>{
+            console.log(a,b);
+            return a*b;
+        };
+        console.log(multi(12,4));
+
+        //箭头函数改写：
+        var id = 10; // var 定义的变量属于window , let 和 const 不是
+        let json={
+            id:1,
+            show:function(){
+                setTimeout(()=>{
+                    //箭头函数解决了this的问题，箭头函数中this一直代表定义函数所在的对象，而不再是调用者
+                    //箭头函数里没有 arguments
+                    alert(this.id);
+                },2000);//延迟两秒
+            }
+        }
+        // let json={
+        //     id:1,
+        //     show:function(){
+        //         setTimeout(function(){
+        //             alert(this.id);
+        //         },2000);//延迟两秒
+        //     }
+        // }
+        json.show();
+
+        //箭头函数不能当构造函数
+        function Show(){
+            this.name = "abc";
+        }
+        let arg = new Show();
+        console.log(arg.name);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

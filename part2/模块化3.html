@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script type="module">
+        /**
+         * 这样的语法不允许
+         * let a = 12;
+         * if (a == 12){
+         *     import {a} from "../modules/modu1.js";
+         * }else{
+         *     import {b} from "../modules/modu1.js";
+         * }
+         */ 
+        //动态引入：
+        import('../modules/modu1.js').then(res=>{
+            //import() 返回值是个 promise 对象
+            console.log(res.a);
+        });
+
+        import('https://code.jquery.com/jquery-3.3.1.js').then(res=>{
+            $(function(){
+                $('body').css({
+                    background:'gray'
+                })
+            });
+        });
+
+        /**
+         * 优点：
+         * 1.按需加载
+         * 2.可以使用 if-else
+         * 3.路径都可以是构建的
+         */ 
+        let sign = 1;
+        let config = (sign)=>{
+            switch(sign){
+                case 1: return '../modules/modu1.js';
+                case 2: return '../modules/modu2.js';
+                case 3: return '../modules/modu3.js';
+                default : break;
+            }
+        }
+        import(config(2)).then(res=>{
+            console.log(res.a);
+        });
+
+
+        Promise.all([
+            import('../modules/modu1.js'),
+            import('../modules/modu2.js'),
+            import('../modules/modu3.js')
+        ]).then(([mod1,mod2,mod3])=>{
+            console.log(mod1);
+            console.log(mod2);
+            console.log(mod3);
+        });
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模块化</title>
+    <style></style>
+    <script type="module">
+        /**
+         * 在 ES6 之前，社区制定一套模块规范：
+         * Common.js    主要是规定了服务端如 node.js    (require)
+         * AMD          客户端规范 require.js   curl.js
+         * CMD          客户端规范 seaJs
+         * 
+         * ES6 统一了服务端规范和客户端规范
+         * 
+         * 模块化：
+         *      注意：*需要服务器环境
+         *      a).如何定义模块
+         *          export xxx
+         *      b).如何使用模块
+         * 使用模块：
+         * <script type="module">
+         */ 
+        import '../modules/modu1.js';//多次 import 同一文件只会执行一次
+        //这么用相当于引入了一个文件
+        import 'https://code.jquery.com/jquery-3.3.1.js';
+
+        setTimeout(()=>{
+            //试试jquery是否引入成功
+            $(function(){
+                $('body').css({
+                    background:'red'
+                })
+            });
+        },2000);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

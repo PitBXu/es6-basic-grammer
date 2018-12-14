@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script type="module">
+        //import 时，只有带有 default 修饰的变量 不需要花括号
+        import c,{a as aaa,ddd,eee,fff} from '../modules/modu1.js';
+        console.log(aaa);
+        console.log(ddd,eee,fff);
+        console.log(c);
+        import * as mol from '../modules/modu1.js';
+        console.log(mol.ddd);
+
+        //import 会自动提升到顶部执行
+        import mod,{show,sum,a,b} from '../modules/modu2.js';
+        let p1 = new mod.Person('Corey');
+        console.log(p1.showName());
+
+        show();
+
+        setTimeout(() => {
+            show(); // 模块里面的内容中途作了修改，外面会同步这个改动，不同于common规范（缓存）
+        }, 3000);
+
+        console.log('和为：'+sum());
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

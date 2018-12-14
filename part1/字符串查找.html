@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        let str = "I like apple and banana.";
+        document.write(str.includes("apple"));//method `includes` defined in ES2016
+
+        if (navigator.userAgent.includes("Chrome")){
+            //alert(navigator.userAgent);
+        }
+
+        let str2 = "https://www.baidu.com";
+        document.write(str2.startsWith("https://"));//判断开头
+        document.write(str2.endsWith(".jpg"));//判断结尾
+        document.write(str2.repeat(10)); //重复字符串
+
+        let strA = 'a';
+        let padStr = '123';
+        console.log(strA.padStart(6,padStr));//向字符串头部添加内容，添加长度决定循环几次 12312a
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

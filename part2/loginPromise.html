@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>loginPromise</title>
+    <style>
+    </style>
+    <script>
+        let status = 1;
+        let userLogin = (resolve,reject) => {
+            setTimeout(()=>{
+                if (status == 1){
+                    resolve({data:'登陆成功',msg:'yyyyyyy',token:'sdasfsdgfdgb'});
+                }else{
+                    reject('failed');
+                }
+            },2000);
+        };
+
+        let getUserInfo = (resolve,reject) => {
+            setTimeout(()=>{
+                if (status == 1){
+                    resolve({data:'获取用户信息成功',msg:'xxxxxxxxxxxx',token:'sdasfsdgfdgb'});
+                }else{
+                    reject('failed');
+                }
+            },1000);
+        }
+
+        new Promise(userLogin).then(res=>{
+            console.log(res.data);
+            console.log(res);
+            return new Promise(getUserInfo);
+        }).then(res=>{
+            console.log(res.data);
+            console.log(res);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

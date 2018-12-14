@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        /*
+        let a=12;
+        let b=5;
+        let c=6;
+        console.log(a);
+        console.log(b);
+        console.log(c);*/
+
+
+        //解构赋值
+        //let [a,[b,c]] = [1,[2,3]];
+        //console.log(a,b,c);
+
+        let json = {
+            name: 'Corey',
+            age: 18,
+            job: '码农'
+        }
+        //let {name:a,age:b,job:c,d='暂无数据'} = json;
+
+        //let [a,b,c] = ['aa','bb',null];
+
+        //console.log(a,b,c);
+
+        //对象赋值给对象，数组赋值给数组
+        let {b,a}  = {a:'banana',b:'apple'};
+        console.log(b,a);//apple banana
+
+        let num1 = 12;
+        let num2 = 5;
+        [num1,num2] = [num2,num1];
+        console.log(num1,num2);
+
+        function getPos(){
+            return {
+                left: 10,
+                top: 20
+            }
+        }
+
+        let {left:l,top:t} = getPos();
+        console.log(l,t);
+
+        function show({a="默认值1",b="默认值2"}={}){
+            console.log(a,b);
+        }
+        show();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

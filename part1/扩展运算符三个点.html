@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        let arr = ['apple','orange','banana'];
+        console.log(arr);
+        console.log(...arr);
+
+        //...[1,2,3,4,5]  =>  1,2,3,4,5  -- 展开
+
+        function show(...a){
+            //进入函数封装为数组 -- 重置
+            console.log(a[0]);
+        }
+        show(1,2,3,4,5,6);
+
+        function sorts(...a){
+            let num = Array.prototype.slice.call(arguments);
+            console.log(num);
+            console.log(num.sort()); // sort排序对负数看起来像是按拼音 哈哈
+            console.log(a.sort());
+        }
+        sorts(10,-2,-5,12,98,-56);
+
+        //剩余作用：剩余参数只能放最后
+        function show2(a,b,...c){
+            console.log(a,b,c);
+        }
+        show2(...[1,2,3,4,5,6,7]);//...不能用于对象（json）
+
+        let arr1 = [1,2,3,4,5];
+        let arr2 = [...arr1]; //拷贝数组
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

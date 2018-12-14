@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+    <style>
+    </style>
+    <script>
+        //promise 解决异步回调的问题
+
+        let a = 1;
+        let promise = new Promise(function(resolve,reject){
+            //resove 成功调用
+            //reject 失败调用
+            if (a == 10){
+                resolve('成功');
+            }else{
+                reject('失败');
+            }
+        });
+        //promiss.then(success,failed);
+        promise.then(suc=>{
+            console.log(suc);
+        },err=>{
+            console.log(err);
+            //如果没有此处理，promise失败时浏览器将会报错
+        });
+
+        promise.catch(err=>{
+            console.log(err);
+        });
+
+        Promise.resolve('a');//将现有的东西转成promise对象，resolve 状态，成功状态
+        Promise.reject('b').catch(err=>null);//将现有的东西转成promise对象，reject 状态，失败状态
+
+        let p1 = Promise.resolve('aaaaa');
+        let p2 = Promise.resolve('bbbbb');
+        let p3 = Promise.reject('ccccc');
+        //把peomise打包成一个promise对象,如果有失败则失败，必须全为 resolve state
+        Promise.all([p1,p2,p3]).then(res=>{
+            console.log("result A is: ",res);
+        }).catch(err=>{
+            console.log("first:"+err);
+        });
+        //只要有一个成功，就返回了
+        Promise.race([p1,p2,p3]).then(res=>{
+            console.log("result B is: ",res);
+        }).catch(err=>{
+            console.log("second:"+err);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

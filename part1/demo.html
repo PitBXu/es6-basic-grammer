@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script>
+            // for (let i=0;i<5;i++){
+            //     console.log(i)
+            // }
+            //alert(i);//undefined
+            var arr = [];
+            for (var i=0;i<10;i++){
+                arr[i] = function(){
+                    console.log(i);
+                }
+            }
+            //arr[5](); 执行数组的第五个数的内嵌函数
+            arr.forEach(function(func){
+                func()
+            })
+           
+
+            window.onload = function(){
+                var aInput =  document.querySelectorAll("input");
+                for (let i=0;i<aInput.length;i++){
+                    aInput[i].onclick = function(){
+                        alert(i);
+                    }
+                }
+            }
+
+            //冻住的对象无论如何不可修改
+            Object.freeze("");
+
+        </script>
+    </head>
+    <body>
+        <input type="button" value="aaa"/>
+        <input type="button" value="bbb"/>
+        <input type="button" value="ccc"/>
+    </body>
+</html>

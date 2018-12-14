@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        //扩展运算符
+        let arr = [1,2,3];
+        let arr2 = [...arr];//亦可 Array.from(arr);(还可以用来把 `类数组` 转换成数组)
+
+        window.onload = function(){
+            let aLi = document.querySelectorAll('ul li');
+            let arrLi = [...aLi];
+            //let arrLi = Array.from(aLi);    //ES6 的方法
+            //let arrLi = [].slice.call(aLi); //ES5 之前的方法
+            arrLi[0].textContent;
+            console.log(arrLi);
+        }
+        
+        function show(){
+            let args = Array.from(arguments);
+            args.push(6);
+            console.log(args);
+        }
+        show(1,2,3,4,5);
+
+        /**
+         * Array.from() 函数可以将有 length 属性的对象（如字符串）转换为数组
+         */ 
+
+        let str = 'Corey';
+        let arrStr = Array.from(str);// let arrStr = str.split('');
+        console.log(arrStr);
+
+        let json = {
+            0:'apple',
+            1:'banana',
+            2:'orange',
+            length:3  //有 length 属性即可使用 Array.from() 转换成数组，length 即为转换后的数组长度
+        };
+        let arrJson = Array.from(json);
+        console.log(arrJson);
+
+        /**
+         * Array.of()  把一组值转换成数组
+         */ 
+        let arr3 = Array.of('apple','banana','orange');
+        /**
+         * 实现： （相当于重写方法）
+         * Array.of = function(...args){
+         *    return args;
+         * }
+         * OR:
+         * Array.of = (...args)=>args;
+         */
+        console.log(arr3);
+
+        /**
+         * arr.find() 找到第一个符合要求的数，如果没有找到返回 undefined
+         * arr.findIndex() 
+         */
+        let arr4 = [23,90,101,233];
+        let max = arr4.find((val,index,arr)=>{
+            return val>100;
+        });
+        console.log(max);
+
+        /**
+         * arr.fill(); 填充数据
+         */
+        let arr5 = new Array(10);
+        arr5.fill("默认值",1,6);// 从1开始，填5项
+        console.log(arr5);
+
+        /**
+         * arr.includes(); 填充数据 ES2016 新增
+         */
+        let b = arr5.includes('默认值');
+        console.log(b);
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+</body>
+
+</html>

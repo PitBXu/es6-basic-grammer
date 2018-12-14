@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        function show(a='欢迎',b='你好'){
+            document.write(a,b);
+        }
+        show("welcome ","Corey!");
+        show(null);//不可以第一个参数传，第二个不传
+        function show2({x=0,y=0}={}){//函数默认值
+            document.write(x,y);
+        }
+        //函数参数在函数内不可再次用 let const 声明(无法覆盖)
+        show2({y:"你大爷"});
+
+        //ES2017 版本后可以有函数最后的逗号了
+        function douh(a,b,c,d,){
+            console.log(a,b,c,d);
+        }
+        douh(1,2,3,4,);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

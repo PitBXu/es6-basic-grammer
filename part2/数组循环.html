@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组循环</title>
+    <style>
+    </style>
+    <script>
+        //ES5中已有的的循环写法
+        /**
+         * arr.forEach();
+         * arr.map();
+         * arr.filter();
+         * arr.some();
+         * arr.every();
+         * arr.reduce();
+         * arr.reduceRight();
+         */
+        let arr = ['apple','banana','orange','tomato'];
+
+        //代替普通 for 循环
+        arr.forEach(function(val,index,arr) {//值，索引，数组
+            console.log(this,val,index,arr);//forEach/map的参数2是函数内部this的指向
+            //没有返回值
+        },123);//   可改箭头函数，不过不再支持第二个参数（箭头函数里的 this 永远指向调用者）
+        
+        let json = [
+            {title:'aaaa',read:100, hot:true},
+            {title:'bbbb',read:101, hot:true},
+            {title:'cccc',read:102, hot:false},
+            {title:'dddd',read:103, hot:false},
+        ];
+        //映射 改名 循环
+        let res = json.map(function(item,index,arr) {
+            //如果没有return,相当于forEach
+            console.log(item,index,arr);
+
+            let json1 = {
+                t:`^_^${item.title}------------`,
+                r:item.read + 200,
+                h:item.hot && '真棒！！！'
+            };
+            return json1;// 只要用map，一定要有return
+        });
+        console.log(res);
+
+        // 过滤 循环
+        let res1 = json.filter(function(item,index,arr){
+            return !item.hot;
+        });
+        console.log(res1);
+
+        //只要数组有一个符合条件的就返回true,查找
+        let res2 = arr.some((val,index,arr)=>{
+            return val == 'banana';
+        });
+        console.log(res2);
+
+        let arr1 = [1,3,5,7,9];
+        //数组中所有都符合条件才返回true
+        let res3 = arr1.every((val,index,arr)=>{
+            return val%2 == 1;
+        });
+        console.log(res3);
+        /*********************************************************************************/
+        
+        //求数组的和 阶乘
+        let sum = arr1.reduce((prev,cur,index,arr)=>{
+            return prev + cur;//prev 就是上一次 return 的结果
+            //Math.pow(prev,cur);
+            //ES2017 新增的运算符 ** 2 ** 3相当于 2 的 3 次方
+        });
+        console.log(sum);
+
+        let arr2 = [1,3,2];
+        //求数组的和 阶乘 从右往左
+        let sum2 = arr2.reduceRight((prev,cur,index,arr)=>{
+            return prev ** cur;
+        });
+        console.log(sum2);
+
+
+        //加强 for 循环
+        for (let [key,val] of arr.entries()){
+            console.log(key,val);
+            // arr.keys() 数组下标
+            // arr.entries() 数组某一项
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

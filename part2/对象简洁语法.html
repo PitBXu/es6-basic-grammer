@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的简洁语法</title>
+    <style>
+    </style>
+    <script>
+        //对象的简洁语法
+        let json = {
+            a:1,
+            b:2,
+            getA:function(){//此处不可用箭头函数(this在箭头函数里指调用方)，但可省略 `:function` 简写成：getA()
+                return this.a;
+            },
+            getB(){
+                return this.b;
+            }
+        };
+
+        console.log(json.getA(),json.getB());
+
+        let name = 'Corey';
+        let age = 18;
+        let json2 = {
+            name,//name:name, // 替换为 name,
+            age,//age:age    // 替换为 age
+            showName:()=>name  //这样写可以，因为箭头函数 this 不能用  *不建议
+        };
+        console.log(json2);
+        console.log(json2.showName());
+
+        let num1 = 10;
+        let num2 = 20;
+        function show({x,y}){
+            //此处解构赋值
+            console.log(x,y);
+        }
+        show({x:num1,y:num2});
+        //如果 变量名也叫 x,y ， 则可省略冒号后面的内容
+
+        /**
+         * Object.is('a','b');
+         * 比较 a,b 是否相等
+         */ 
+        console.log(Number.isNaN(NaN)); // 调用了 Number 类的 isNaN 方法（ES6规范）
+        console.log(isNaN(NaN));    //和下面的一模一样
+        console.log(window.isNaN(NaN)); // 调用了 父类 window 的 isNaN 方法
+        console.log(NaN == NaN);  //false
+        console.log(Object.is(NaN,NaN)); //true
+
+        console.log(+0 == -0);  //true
+        console.log(Object.is(+0,-0)); //false
+
+        /**
+         * Object.assign();
+         * 用来合并对象
+         */ 
+        let json4 = {a:1};
+        let json5 = {b:2,a:2};
+        let json6 = {c:3};
+        let jsonRes = Object.assign({},json4,json5,json6);//合并时后面的覆盖前面的
+        console.log(jsonRes);
+
+        //assign 用来合并参数
+        function ajax(options){
+            //后台传来的json : options
+            //default 的 json ： defaults
+            let defaults = {
+                type:'get',
+                head:'charset = utf-8',
+                data:{}
+            }
+            return Object.assign({},defaults,options);
+        }
+
+        let arr = ['apple','banana','orange'];
+        let arr2 = Object.assign([],arr);
+        console.log(arr2);
+
+        /**
+         * ES2017引入：
+         * Object.keys();
+         * Object.entries();
+         * Object.values();
+         */ 
+        let json7 = {
+            a:1,
+            b:2,
+            c:3
+        }
+        for (let key of Object.keys(json7)){//省略了 Object
+            console.log(key);
+        }
+        for (let ent of Object.entries(json7)){
+            console.log(ent);
+        }
+        for (let val of Object.values(json7)){
+            console.log(val);
+        }
+
+        let {entries} = Object;//以后 entries() 就代表了 Object.entries();
+        for (let [key,val] of entries(json7)){
+            console.log(key,val);
+        }
+
+        /**
+         * 对象的扩展运算
+         */ 
+        let {x,y,...z} = {x:1,y:2,z:3,h:4};
+        console.log(x,y,z);//1,2
+        let json8 = {x:1,y:2,z:3,h:4};
+        let json9 = {...json8};
+        delete json9.z;
+        console.log(json9);
+        console.log(json8);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
